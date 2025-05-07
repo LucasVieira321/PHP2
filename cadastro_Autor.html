@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Autor</title>
+<style>
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #27cce2, #d67507); /* Degradê simples da esquerda para a direita */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+ }
+ .centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    box-sizing: border-box;
+}
+fieldset {
+    border: 3px solid dodgerblue;
+}
+legend {
+    border: 1px solid dodgerblue;
+    padding: 10px;
+    text-align: center;
+    background-color: dodgerblue;
+    border-radius: 8px;
+    color: white;
+}
+.inputBox {
+    position: relative;
+    margin-bottom: 25px;
+}
+.inputUser {
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 0;
+}
+.labelInput {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+}
+.inputUser:focus ~ .labelInput,
+.inputUser:valid ~ .labelInput {
+    top: -20px;
+    font-size: 14px;
+    color: dodgerblue;
+}
+button {
+    padding: 10px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 100%;
+}
+button:hover {
+    background-color: #005f9e;
+}
+.link {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+.link:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <div class="centro">
+        <fieldset>
+            <legend><b>Formulário do Autor</b></legend>
+            <h1 style="color: white;">Cadastro de Autor</h1>
+            <form action="salvar_autor.php" method="POST">
+                <div class="inputBox">
+                   <input type="text" id="nome" name="nome" class="inputUser" required>
+                   <label for="nome" class="labelInput">Nome:</label>
+                </div>
+                <div class="inputBox">
+                   <input type="text" id="cpf" name="cpf" class="inputUser" required>
+                   <label for="cpf" class="labelInput">CPF:</label>
+                </div>
+                <div class="inputBox">
+                   <input type="number" id="ano_nascimento" name="ano_nascimento" class="inputUser" required>
+                   <label for="ano_nascimento" class="labelInput">Ano de Nascimento:</label>
+                </div>
+                <div class="inputBox">
+                   <input type="text" id="cidade" name="cidade" class="inputUser" required>
+                   <label for="cidade" class="labelInput">Cidade:</label>
+                </div>
+                <div class="inputBox">
+                   <input type="text" id="estado" name="estado" class="inputUser" required>
+                   <label for="estado" class="labelInput">Estado:</label>
+                </div>
+                <button type="submit">Cadastrar Autor</button>
+            </form>
+        </fieldset>
+        <a href="cadastro_livro.html" class="link">Ir para Cadastro de Livros</a>
+    </div>
+</body>
+</html>
