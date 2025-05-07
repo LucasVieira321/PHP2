@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livro</title>
+<style>
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #27cce2, #d67507); /* Degradê simples da esquerda para a direita */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+ }
+ .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    box-sizing: border-box;
+}
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.inputBox {
+    position: relative;
+    margin-bottom: 25px;
+}
+.inputUser {
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 0;
+}
+.labelInput {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: white;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+}
+.inputUser:focus ~ .labelInput,
+.inputUser:valid ~ .labelInput {
+    top: -20px;
+    font-size: 14px;
+    color: dodgerblue;
+}
+button {
+    padding: 10px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 100%;
+}
+button:hover {
+    background-color: #005f9e;
+}
+.link {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+}
+.link:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Livro</h1>
+        <form action="salvar_livro.php" method="POST">
+            <div class="inputBox">
+                <input type="text" id="isbn" name="isbn" class="inputUser" required>
+                <label for="isbn" class="labelInput">ISBN:</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="nome_livro" name="nome_livro" class="inputUser" required>
+                <label for="nome_livro" class="labelInput">Nome do Livro:</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="autor" name="autor" class="inputUser" required>
+                <label for="autor" class="labelInput">Autor:</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="editora" name="editora" class="inputUser" required>
+                <label for="editora" class="labelInput">Editora:</label>
+            </div>
+            <div class="inputBox">
+                <input type="number" id="ano_publicacao" name="ano_publicacao" class="inputUser" required>
+                <label for="ano_publicacao" class="labelInput">Ano de Publicação:</label>
+            </div>
+            <button type="submit">Cadastrar Livro</button>
+        </form>
+        <a href="cadastro_autor.html" class="link">Ir para Cadastro de Autor</a>
+        <a href="Pagina_Inicial.html" class="link">Voltar para Página Inicial</a>
+    </div>
+</body>
+</html>
