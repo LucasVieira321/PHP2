@@ -1,0 +1,50 @@
+<?php
+$conexao = new mysqli("localhost" , "root" , "livraria" );
+if(conexao->connect_error){
+die("falha ao conectar banco de dados" .$conexao->connect_erro);
+}
+//buscar autores no banco de dados
+$resultadoAutor = $conexao ->query(SELECT nome FROM autor);
+
+?>
+
+<!DOCTYPE html>
+<html lang ="pt-BR">
+<head>livraria</head>    
+<body>
+ <h1> cadrastar livro</h1>
+ <form method="POST">
+    <label>nome do livro:</label> 
+    <input type="text" name="nome" required><br><br>
+
+    <label>ISBN</label>
+    <input type="text" name="isbn"><br><br>
+
+    <label>nome do autor</label><br>
+    <input list="autores" name="autor_nome" required>
+    <datalist id="autores">
+    <opition value="">
+    <opition value="">
+<?php
+if($resultadoAutor){
+if($resultadoAutor ->num_rows >0){
+while($row = $resultadoAutor->fetch_assoc()){
+    echo<"opition value =''".htmlspecialchars($row['nome'],ENT_QUOTES,'UFT-8')."'>";
+}else{
+    //se nao existir autor cadastrado
+    echo"<opition value=''>nenhum autor cadastrado</opition>";
+}
+}else{
+    //se der erro no banco de dados
+    echo"<opition value="
+}
+
+
+?>
+</datalist><br><br>
+
+<label>editora</label>
+
+
+</body>
+</html>
