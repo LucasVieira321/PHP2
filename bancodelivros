@@ -25,6 +25,32 @@ $resultadoAutor = $conexao ->query(SELECT nome FROM autor);
     <datalist id="autores">
     <opition value="">
     <opition value="">
+</form>
+<?php
+if($_SERVER["REQUEST_METHOD"]==POST){
+   $nome = ($_POST['nome']);
+   $isbn = ($_POST['isbn']);
+   $nomeAutor = ($_POST['autor_nome']);
+   $editora = ($_POST['editora']);
+   $ano_pub = ($_POST['ano_publicacao']);
+  $consultarAutor = $conexao->prepare("SELECT id FROM autor WHERE nome = ?");
+  $consultarAutor ->bind_param("s",$nomeAutor);
+  $consultarAutor->execute();
+  $resultado = $consultarAutor->get_result();
+  if($resultado->num_rows > 0){
+    $row =$resultado->fetch_assoc();
+    $autor_id = row['id'];
+
+    $consultarLivro =$conexao->prapare("INSERT INTO
+    livro (nome, isbn, autor_id, editora, ano_lancamento) VALUES(?,?,?,?,?)");
+$consultarLivro->bind_param("ssiss", $nome,$isbn,$autor_id,$editora,$ano_pub);
+if($consultarLivro->execute()){
+    echo"livro cadastrado com sucesso";
+}else{
+    echo = "erro ao cadrastrar livro:".$consultarLivro->erro;
+}
+}
+?>
 <?php
 if($resultadoAutor){
 if($resultadoAutor ->num_rows >0){
@@ -39,12 +65,12 @@ while($row = $resultadoAutor->fetch_assoc()){
     echo"<opition value="
 }
 
-
+$conexao->close();
 ?>
 </datalist><br><br>
 
 <label>editora</label>
 
-
+<p><a href="autor.php">Cadastrar Autor</a></p>
 </body>
 </html>
